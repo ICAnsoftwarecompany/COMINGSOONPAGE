@@ -1,0 +1,223 @@
+.borel-regular {
+    font-family: "Borel", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Reset and Body Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.video-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* تظليل خفيف يغطي الفيديو */
+    pointer-events: none; /* يسمح بالتفاعل مع الفيديو */
+    z-index: 1; /* تأكد من ظهور الطبقة فوق الفيديو */
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0; /* الفيديو تحت التظليل */
+}
+
+
+/* Logo Styling */
+.logo {
+    position: absolute;
+    top: 50px; /* إنزال الشعار للأسفل */
+    right: 50px; /* تحريكه باتجاه اليسار */
+    z-index: 10; /* التأكد من بقاء الشعار فوق العناصر الأخرى */
+}
+
+.logo img {
+    height: 50px; /* حجم الشعار */
+    width: auto; /* الحفاظ على تناسب الأبعاد */
+}
+
+/* Content Overlay */
+.content {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 1rem;
+}
+/* Animation for h1 */
+.content h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    transform: translateY(-400px); /* يبدأ من الأعلى */
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    opacity: 0; /* البداية شفافة */
+    animation: slideIn 2s ease-out forwards; /* تطبيق الأنيميشن */
+}
+
+/* Text Animation for p1 */
+.content p {
+    font-family: "Borel", serif;
+    font-size: 3.5rem; /* حجم النص */
+    margin: 0; /* إزالة الهوامش */
+    padding: 0; /* إزالة الحشوات */
+    color: white; /* لون النص */
+    transform: translate(-140px, 150px); /* ترحيل إلى اليسار وإنزال لأسفل */
+    white-space: nowrap; /* إبقاء النص على سطر واحد */
+    overflow: hidden; /* إخفاء النص الزائد أثناء الكتابة */
+    border-right: 2px solid rgba(255, 255, 255, 0.75); /* إضافة مؤشر الكتابة */
+    animation: typing 4s steps(30, end), blink 0.7s step-end infinite; /* أنيميشن الكتابة */
+}
+
+/* Typing Effect */
+@keyframes typing {
+    from {
+        width: 0; /* يبدأ النص من الصفر */
+    }
+    to {
+        width: 100%; /* يصل النص إلى العرض الكامل */
+    }
+}
+
+/* Cursor Blink Effect */
+@keyframes blink {
+    from {
+        border-color: rgba(255, 255, 255, 0.75); /* اللون الأول للمؤشر */
+    }
+    to {
+        border-color: transparent; /* يجعل المؤشر شفافًا */
+    }
+}
+
+
+/* Keyframes for h1 (Slide In) */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-200px); /* يبدأ من الأعلى */
+        opacity: 0; /* شفاف */
+    }
+    100% {
+        transform: translateY(0); /* يصل إلى مكانه النهائي */
+        opacity: 1; /* يظهر */
+    }
+}
+
+
+/* Social Links Styling */
+.social-links {
+    position: absolute;
+    bottom: 40px; /* رفع الروابط إلى الأعلى */
+    left: 60px; /* تحريك الروابط نحو اليمين */
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* زيادة المسافة بين العناصر */
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem; /* تكبير النص */
+    font-weight: bold;
+    gap: 8px; /* المسافة بين الأيقونة والنص */
+    transition: all 0.3s ease-in-out; /* تأثير أنيميشن للتحويم */
+}
+
+.social-links a:hover {
+    color: #ffd700; /* تغيير لون النص عند التحويم */
+    transform: scale(1.1); /* تكبير العنصر قليلاً */
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px; /* جعل الأيقونة مربعة الشكل */
+    object-fit: cover;
+    border-radius: 50%; /* جعل الأيقونة دائرية */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل خفيف */
+    transition: all 0.3s ease-in-out; /* تأثير سلس */
+}
+
+.social-links img:hover {
+    transform: scale(1.2); /* تكبير الأيقونة عند التحويم */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* تكثيف الظل عند التحويم */
+}
+
+.social-links span {
+    font-size: 1.2rem; /* حجم النص */
+    color: white;
+    transition: color 0.3s ease-in-out; /* تأثير تغيير اللون */
+}
+
+.social-links span:hover {
+    color: #ffd700; /* تغيير اللون إلى ذهبي عند التحويم */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .content h1 {
+        font-size: 2.5rem; /* Adjusted for tablets */
+    }
+
+    .content p {
+        font-size: 2rem; /* Scaled down for better readability */
+        margin-inline-end: 3%;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content h1 {
+        font-size: 1.8rem; /* Adjusted for smaller screens */
+    }
+
+    .content p {
+        font-size: 1.5rem; /* Smaller for mobile devices */
+        margin-inline-end: 2%;
+    }
+
+   
+    .social-links img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .social-links span {
+        font-size: 0.8rem;
+    }
+}
